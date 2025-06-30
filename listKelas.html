@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Kelas</title>
+</head>
+<style>
+    /*Css untuk navbar*/
+    body {
+        background-color: #D9D9D9;
+    }
+        nav {
+            background-color: #4A1B9D;
+            display: flex;
+            padding: 10px 5%;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            color: #DADADA;
+            box-sizing: border-box;
+        }
+    .focus {
+        display: none;
+        content: '';
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        background-color: #515151cc;
+        z-index: 98;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    nav span {
+        display: flex;
+        align-items:center;
+        gap: 5px;
+        position: relative;
+    }
+    /*Css untuk nnotifikasi*/
+    .notif::after {
+    content: "1";
+    position: absolute;
+    z-index: 97;
+    transform: translateX(-20px);
+    background-color: #FF9919;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 7px;
+    }
+    .notif {
+        height: 40px;
+    }
+    .alert {
+        width: 300px;
+        height: 100vh;
+        background-color: #D9D9D9;
+        position: fixed;
+        z-index: 99;
+        right: 0px;
+        transform: translateX(100%);
+        transition: ease-in 200ms;
+    }
+    .alert.active {
+        transform: translateX(0px);
+    }
+    /*Css untuk isi*/
+    header {
+        color: #515151;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        flex-direction: column;
+        gap: 20px;
+        padding: 45px 5% 40px 5%;
+    }
+    header input[type = "text"] {
+        width: 400px;
+        height: 30px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #515151;
+        background-color: #D9D9D9;
+        padding: 0px 10px;
+    }
+    header span {
+        width: 150px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        align-items: center;
+        border-radius: 5px;
+        color: #000000;
+        gap: 10px;
+        border: 1px solid black;
+    }
+    .filter {
+        display: none;
+        width: 150px;
+        background-color: #FAFAFA;
+        position: absolute;
+        transform: translateY(120px);
+        color: #000000;
+        z-index: 99;
+
+    }
+    section {
+        padding: 0px 5% 20px 5%;
+    }
+    .filter form {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        align-items: center; 
+    }
+    .alert .alertList div {
+        display: flex;
+        background-color: #FAFAFA;
+        height: 60px;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .alert .alertList div::before {
+        position: absolute;
+        left: 0px;
+        content: "";
+        width: 10px;
+        height: 60px;
+        background-color: #04D63C;
+    }
+    .listkelas {
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    section .cards {
+        background-color: #04D63C;
+        padding: 0px 40px;
+        height: 123px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5px;
+
+    }
+    section .cards span {
+        display: flex;
+        justify-content: space-between;
+    }
+    .backCard {
+        height: 123px;
+        display: flex;
+        position: absolute;
+        width: 90%;
+        transform: translate(-40px, -0px);
+        z-index: 1;
+        border-radius: 5px;
+    }
+    footer {
+        background-color: #752A89;
+        width: 100%;
+        height: 20px;
+        position: fixed;
+        bottom: 0px;
+        z-index: 99;
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FAFAFA;
+    }
+</style>
+<body>
+    <div class="alert" id="alert">
+        <nav>        
+            <i class="fa-solid fa-xmark" style="color: #FAFAFA;" id="tutup"></i>    
+            <h3 style="width: 200px; color: #FAFAFA;">Notifikasi</h3>
+        </nav>
+        <div class="alertList" id="alertList">
+        </div>
+    </div>
+    <div class="focus" id="backgroundGelap"></div>
+    <nav style="color: #FAFAFA;">
+        <span>
+            <img src="assets/Logo Gram.png" alt="">
+            <h3 style="color: #FAFAFA;">WASKITA</h3>
+        </span>
+        <span>
+            <div class="notif">
+                <img src="assets/notification.png" alt="" id="buka">
+            </div>
+            <img src="assets/photo.jpg" style="border-radius: 25px; border: 2px solid #FAFAFA; margin: 0px 0px 0px 20px;" alt="">
+        </span>
+    </nav>
+    <header>
+        <input type="text" placeholder="Search" id="search" onclick="cari">
+        <span id="buttomFilter">
+            <img src="assets/equalizer.png" style="width: 20px; height: 20px;" alt="">
+            Filter
+        </span>
+        <div class="filter" id="filter">
+            <form action="">
+                <div class="pilihan" style=" width: 90%; padding: 10px; font-size: 16px;">
+                    <label style="background-color: #DADADA; padding: 5px 10px; margin: 0px 0px 10px 0px; display: flex; justify-content: space-between;" onclick="tampilkan"><input type="radio" style="margin: 0px 20px 0px 0px; " checked name="sort" id="urut" value="asc">  A-Z</label>
+                    <label style="background-color: #DADADA; padding: 5px 10px; display: flex; justify-content: space-between;" onclick="tampilkan"><input type="radio" style="margin: 0px 20px 0px 0px;" name="sort" id="urut" value="desc"> Z-A</label>
+                </div>
+            </form>
+        </div>
+    </header>
+    <section>
+        <div class="baruDilihat" style="padding-bottom: 40px;">
+            <p>Recently Acess</p>
+            <div class="cards" style="background-color: #00809D;" onclick="link()">
+                <span style="position: relative; z-index: 91;"><h2 style="font-size: 26px;">2025-Genap</h2><i class="fa-solid fa-ellipsis" style="color: #FAFAFA;"></i></span>
+                <p style="position: relative; z-index: 91; font-size: 18px;" >SI06 - REKAYASA PERANGKAT LUNAK</p>
+            </div>
+        </div>
+        <p>Course Overview</p>
+        <div class="listkelas" id="daftarKelas">
+        </div>
+        <p>Course Complite</p>
+        <div class="listkelas" id="kelasSelesai">
+        </div>
+    </section>
+    <footer>© 2025 Universitas Amikom Yogyakarta | Dikembangkan oleh Kelompok Firefly | Tugas Proyek UI/UX</footer>
+</body>
+<script src="assets/js/kelas.js"></script>
+<script>
+    function link(){
+        window.location.href="kelas.html"
+    }
+    function link2(){
+        window.location.href="kelas2.html"
+    }
+</script>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <title>Login</title>
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  body::-webkit-scrollbar {
+            display: none;
+        }
+  .login {
+    width: 800px;
+    height: 500px;
+    background-color: #752A89;
+    border-radius: 5px;
+    border: 2px solid black;
+    display: flex;
+  }
+  section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  input {
+    color: #515151;
+  }
+  input, button {
+    height: 40px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #515151;
+    font-size: 14px;
+  }
+  .alert {
+    display: none;
+    background-color: red;
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    transform: translateY(-300px);
+  }
+  input::placeholder {
+    font-weight: 300;
+  }
+</style>
+<body>
+  <div class="alert" id="alert">
+    <h3 style="font-size: 14px; font-weight: 300; display: flex; align-items: center; gap: 5px;"><img src="../assets umum/Frame 14.png" alt="">Login Gagal</h3>
+    <p style="font-size: 8px;">Priksa kembali email dan password anda</p>
+  </div>
+  <div class="login">
+    <section style="background-color: #FFFFFF;">
+      <img src="assets/Logo Primer - Vertical.jpg">
+    </section>
+    <section>
+      <div class="card">
+        <h1 style="margin-bottom: 10px; font-size: 28px; font-weight: 400; color: #FAFAFA;">Login</h1>
+        <form action="">
+          <input type="text" placeholder="E-mail" name="" id="email">
+          <br>
+          <input type="password" placeholder="Password" name="" id="password">
+          <br>
+          <button type="button" style="background-color: #FF9919; color: #FFFFFF;" onclick="login()">Login</button>
+          <p style="text-align: center; font-size: 10px; color: #FAFAFA;">OR</p>
+          <button type="button" style="background-color: #FFFBFB; color: #515151; display: flex; justify-content: center; align-items: center; gap: 10px;" onclick="google()"><img src="assets/Vector.png" alt="">Email Amikom</button>
+        </form>
+      </div>
+    </section>
+  </div>
+</body>
+<script>
+      function login(){
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const alert = document.getElementById('alert');
+        console.log(email);
+        console.log(password);
+    
+            if(email == "sayadosen@amikom.ac.id" && password =="amikom"){
+                window.location.href="listKelas.html"
+            }else {
+                alert.style.display = 'block'
+                document.getElementById('email').value = "";
+                document.getElementById('password').value= "";
+            }
+        }
+    
+        function google(){
+            window.location.href="listKelas.html"
+        }
+</script>
+</html>

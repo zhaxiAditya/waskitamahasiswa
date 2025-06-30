@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>REKAYASA PERANGKAT LUNAK</title>
+</head>
+    <style>
+        nav {
+            background-color: #4A1B9D;
+            display: flex;
+            padding: 10px 5%;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            color: #DADADA;
+            box-sizing: border-box;
+        }
+        .focus {
+            display: none;
+            content: '';
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            background-color: #515151cc;
+            z-index: 98;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+        }
+        nav span {
+            display: flex;
+            align-items:center;
+            gap: 5px;
+            position: relative;
+        }
+        nav a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: #FAFAFA;
+            align-items:center;
+            gap: 5px;
+            position: relative;
+        }
+        /*header*/
+        header {
+            box-sizing: border-box;
+            background-color: #00809D;
+            height: 155px;
+            margin: 30px 0px;
+            padding: 0px 5%;
+            align-items: end;
+            display: flex;
+            justify-content: space-between;
+        }
+        header span, header button {
+            position: relative;
+            z-index: 90;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+
+        }
+        header .addKelas button {
+            height: 40px;
+            width: 120px;
+        }
+        /*section*/
+        section {
+            padding: 0px 5%;
+        }
+        article {
+            padding: 10px 0px;
+        }
+        article span {
+            display: flex;
+            align-items: center;
+        }
+        article span img {
+            width: 30px;
+            height: 30px;
+        }
+        article a {
+            padding: 0px 20px;
+            color: #5861FF;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        article p {
+            padding: 20px 0px;
+            font-size: 14px;
+        }
+        /*fotter*/
+        footer {
+            background-color: #752A89;
+            width: 100%;
+            height: 20px;
+            position: fixed;
+            bottom: 0px;
+            z-index: 99;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FAFAFA;
+        }
+                .kelas {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .kelas a {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+        }
+        a img {
+            width: 20px;
+            height: 20px;
+            padding-right:10px;
+        }
+        .pertemuan {
+            display: flex;
+            background-color: #FAFAFA;
+            padding: 10px 10px;
+            width: 100%;
+            border-radius: 5px;
+            justify-content: end;
+            align-items: center;
+            height: 30px;
+        }
+        .pertemuan h4 {
+            position: absolute;
+            text-align: center;
+            width: 90%;
+            z-index: 1;
+        }
+        #option {
+            position: absolute;
+            display: none;
+            right: 5%;
+            transform: translate(-15px, -10px);
+            background-color: #FAFAFA;
+            width: 180px;
+            padding: 20px 20px;
+            text-align: center;
+            border: 1px solid black;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .option a {
+            font-weight: 400;
+            padding: 10px 20px;
+            background-color: #DADADA;
+            text-decoration: none;
+            color: #000000;
+            font-size: 18px;
+        }
+    </style>
+<body>
+    <nav>
+        <a href="listKelas.html">
+            <img src="assets/Logo Gram.png" style="width: 40px; height: 40px;" alt="">
+            <h3 style="color: #FAFAFA;">WASKITA</h3>
+        </a>
+        <span>
+            <img src="assets/photo.jpg" style="border-radius: 25px; border: 2px solid #FAFAFA; margin: 0px 0px 0px 20px;" alt="">
+        </span>
+    </nav>
+    <header>
+        <span>
+            <h2>2025 - Genap</h2>
+            <h3><span id="kelas"></span>SI06 - REKAYASA PERANGKAT LUNAK</h3>
+        </span>
+    </header>
+    <section>
+        <div class="cards">
+            <span>
+                <h4>Informasi Kelas</h4>
+            </span>
+            <article>
+                <span><img src="assets/document.png" alt=""><a href="https://drive.google.com/file/d/16c3083_icJZlpIFmE5euylfiVDYd0qdZ/view?usp=sharing">Kata Pengantar</a></span>
+                <p>Mata kuliah UI/UX membahas prinsip-prinsip dasar dalam perancangan antarmuka pengguna (User Interface) dan pengalaman pengguna (User Experience) dalam pengembangan aplikasi dan situs web. Mahasiswa akan mempelajari proses desain yang berfokus pada pengguna, mulai dari riset kebutuhan pengguna, pembuatan wireframe dan prototipe, hingga evaluasi usability. Mata kuliah ini juga mencakup penggunaan alat bantu desain seperti Figma atau Adobe XD, serta penerapan estetika dan fungsionalitas untuk menciptakan produk digital yang intuitif, efisien, dan menarik.</p>
+            </article>
+                <div class="pertemuan">
+                    <h4>Pertemuan 1</h4>
+                </div>
+            <article>
+                <span style="padding-bottom: 20px;"><img src="assets/document.png" alt=""><a href="https://drive.google.com/file/d/16c3083_icJZlpIFmE5euylfiVDYd0qdZ/view?usp=sharing">Materi Pertemuan 1</a></span>
+                <span><img src="assets/document-complate.png" alt=""><a href="upload_tugas.html">Tugas laporan Mingguan</a></span>
+                <p>[Tugas Menentukan Ide dan Validasi Ide]
+                Masing-masing kelompok perlu : <br>
+                1.Membuat draft ide <br>
+                2. Mengisi form pendataan kelompok <br>
+                3. Menjabarkan ide sesuai template https://bit.ly/tmuiuxs1si244 <br>
+                4. Menjabarkan validasi ide sesuai template</p>
+            </article>
+                <div class="pertemuan">
+                    <h4>Pertemuan 2</h4>
+                </div>
+            <article>
+                <span style="padding-bottom: 20px;"><img src="assets/document.png" alt=""><a href="https://drive.google.com/file/d/16c3083_icJZlpIFmE5euylfiVDYd0qdZ/view?usp=sharing">Materi Pertemuan 2</a></span>
+            </article>
+            <div class="pertemuan">
+                <h4>Pertemuan 3</h4>
+            </div>
+            <article>
+                <span><img src="assets/document.png" alt=""><a href="">Materi Pertemuan 3</a></span>
+                <div class="video" style="display: flex; justify-content: center; align-items: center;">
+                    <iframe width="1000" height="400" style="border-radius: 10px;"
+                    src="https://www.youtube.com/embed/lRsB0ft00sE?si=PloYom9zsmp1Khu9" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                    </iframe>
+                </div>
+                <span style="padding: 20px 0px;"><img src="assets/quiz.png" alt=""><a href="quiz.html">Evaluasi Pemahaman Materi</a></span>
+                <span style="padding-bottom: 20px;"><img src="assets/quiz.png" alt=""><a href="quiz_essay.html">Buat Ringkasan dari Materi di Atas</a></span>
+            </article>
+        </div>
+    </section>
+    <br>
+    <footer>© 2025 Universitas Amikom Yogyakarta | Dikembangkan oleh Kelompok Firefly | Tugas Proyek UI/UX</footer>
+</body>
+    <script>
+        const buka = document.getElementById('buka');
+        const pilih = document.getElementById('option');
+        buka.addEventListener('click', function(){
+            if(pilih.style.display === "none" || pilih.style.display === ""){
+                pilih.style.display = 'flex';
+            }else {
+                pilih.style.display = 'none';
+            }
+        })
+    </script>
+</html>

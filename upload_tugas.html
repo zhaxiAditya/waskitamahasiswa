@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Essay Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<style>
+  body {
+    background-color: #D9D9D9;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+  }
+
+  /*CSS Navbar*/
+  nav {
+    background-color: #4A1B9D;
+    display: flex;
+    padding: 10px 5%;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    color: #DADADA;
+    box-sizing: border-box;
+  }
+
+  .notif::after {
+    content: "1";
+    position: absolute;
+    z-index: 97;
+    transform: translateX(-20px);
+    background-color: #FF9919;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 7px;
+    color: white;
+  }
+
+  .notif {
+    height: 40px;
+  }
+
+  .alert {
+    width: 300px;
+    height: 100vh;
+    background-color: #DADADA;
+    position: fixed;
+    z-index: 99;
+    right: 0px;
+    transform: translateX(100%);
+    transition: ease-in 200ms;
+  }
+
+  .alert.active {
+    transform: translateX(0px);
+  }
+
+  .focus {
+    display: none;
+    content: '';
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: #515151cc;
+    z-index: 98;
+  }
+
+  /*CSS Header Kelas*/
+  .header-kelas {
+    height: 150px;
+    margin-top: 2%;
+    position: relative;
+    padding: 10px 10%;
+    background-color: #03AB6E;
+  }
+
+  .text {
+    margin-top: 5%;
+    z-index: 2;
+    position: relative;
+    margin-left: -3.5%;
+  }
+
+  .text p {
+    font-size: 20px;
+    color: #000000;
+  }
+
+  /*Footer*/
+  footer {
+    background-color: #752A89;
+    width: 100%;
+    height: 20px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 99;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FAFAFA;
+  }
+
+  /*CSS QUIZ*/
+  .container-box {
+    background-color: white;
+    margin: 1.5% 5%;
+    padding: 1.5%;
+    box-sizing: border-box;
+  }
+
+  .container-button {
+    margin: 1.5% 5%;
+    box-sizing: border-box;
+    text-align: right;
+  }
+
+  .info-quiz div {
+    display: flex;
+    gap: 0px;
+    margin-top: 0px;
+  }
+
+  .label {
+    width: 120px;
+    display: inline-block;
+  }
+
+  .judul-quiz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .judul-quiz h1 {
+  font-size: 16px;
+  }
+
+  .judul-quiz img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  .essay-textarea {
+    width: 100%;
+    min-height: 120px;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+
+  .button-submit {
+    background-color: #03AB6E;
+    border-radius: 6px;
+    padding: 8px 24px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /*CSS UPLOAD TUGAS*/
+  .upload-section {
+    background-color: white;
+    margin: 1.5% 5%;
+    padding: 1%;
+    box-sizing: border-box;
+  }
+
+  .upload-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .upload-description {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .upload-box {
+    flex: 0 0 250px;
+    text-align: center;
+    border: 3px solid #DADADA;
+    padding: 35px 120px;
+    cursor: pointer;
+  }
+
+  .upload-box img {
+    width: 100px;
+    height: auto;
+  }
+
+  .upload-box p {
+    margin-top: 10px;
+    color: #59D3FF;
+    font-weight: bold;
+  }
+
+  .container-button {
+    margin-top: 10px;
+    text-align: right;
+    margin-right: 200px;
+  }
+
+  .submit-btn {
+    background-color: limegreen;
+    color: white;
+    border: none;
+    padding: 5px 25px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /*CSS Alert*/
+  .custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 2px solid #59D3FF;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 15px 25px;
+    z-index: 1000;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInOut 3s forwards;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      top: 10px;
+    }
+    10% {
+      opacity: 1;
+      top: 20px;
+    }
+    90% {
+      opacity: 1;
+      top: 20px;
+    }
+    100% {
+      opacity: 0;
+      top: 10px;
+    }
+  }
+
+</style>
+<body>
+    <!-- Notifikasi -->
+    <div class="alert" id="alert">
+        <nav>
+        <i class="fa-solid fa-xmark" style="color: #FFFFFF;" id="tutup"></i>
+        <h3 style="width: 200px; color: #FFFFFF;">Notifikasi</h3>
+        </nav>
+    </div>
+    <div class="focus" id="backgroundGelap"></div>
+    <nav>
+        <span>
+        <img src="assets/Logo Gram.png" alt="">
+        <h3 style="color: #FFFFFF;">WASKITA</h3>
+        </span>
+        <span>
+        <div class="notif">
+            <img src="assets/notification.png" alt="" id="buka">
+        </div>
+        <img src="assets/photo.jpg" style="border-radius: 25px; border: 2px solid #FAFAFA; margin-left: 20px;" alt="">
+        </span>
+    </nav>
+
+    <!-- Header Kelas -->
+    <div class="header-kelas">
+        <div class="text">
+        <h2>2025 - Ganjil</h2>
+        <h3>SI170 - TUGAS PROYEK UI/UX - [ 22S1SI06-TugasPr(SI170)-20242 ]</h3>
+        </div>
+    </div>
+
+    <!-- Informasi Quiz -->
+    <section class="section-quiz">
+      <div class="container-box">
+        <div class="judul-quiz">
+            <h1>Tes Pemahaman UI/UX</h1>
+            <img class="cancel-button" src="assets/cancel-button.png" onclick="window.location.href='kelas.html'" style="cursor: pointer;">
+        </div>
+        <div class="info-quiz">
+            <div><span class="label" style="font-size: 12px;">Batas Akhir</span><span style="font-size: 12px;">: 23:59, 31 Agustus 2025</span></div>
+            <div><span class="label" style="font-size: 12px;">Status</span><span style="color: #59D3FF; font-size: 12px;">: Sedang Dikerjakan</span></div>
+            <div><span class="label" style="font-size: 12px;">Nilai</span><span style="font-size: 12px;">: --</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Tugas -->
+     <section class="upload-section">
+      <div class="upload-container">
+        <div class="upload-description">
+          <h2>[Tugas Menentukan Ide dan Validasi Ide]</h2>
+          <p>Masing-masing kelompok perlu :</p>
+          <p>1. Membuat draft ide</p>
+          <p>2. Mengisi form pendataan kelompok</p>
+          <p>3. Menjabarkan ide sesuai template <a href="https://bit.ly/tmuiuxsls24" target="_blank">https://bit.ly/tmuiuxsls24</a></p>
+          <p>4. Menjabarkan validasi ide sesuai template</p>
+        </div>
+
+        <div class="upload-box" id="uploadBox">
+          <img src="assets/upload-icon.png" alt="Upload" draggable="false">
+          <p id="uploadText">Upload Disini</p>
+          <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" style="display: none;">
+        </div>
+      </div>
+      <div class="container-button">
+        <button class="submit-btn">Submit</button>
+      </div>
+    </section>
+
+    <div id="upload-alert" class="custom-alert" style="display: none;">
+      <p>Tugas Berhasil di Upload</p>
+    </div>
+</body>
+
+<script>
+  // Fitur Sidebar Notif
+  const alert = document.getElementById("alert");
+  const focus = document.getElementById('backgroundGelap')
+  const tombolbuka = document.getElementById("buka");
+  const tomboltutup = document.getElementById('tutup');
+
+  tombolbuka.addEventListener("click", function(){
+    alert.classList.add("active")
+    focus.style.display = "block"
+  });
+
+  tomboltutup.addEventListener("click", function(){
+    alert.classList.remove("active")
+    focus.style.display = "none"
+  });
+
+  const uploadBox = document.getElementById('uploadBox');
+  const fileInput = document.getElementById('fileInput');
+  const uploadText = document.getElementById('uploadText');
+
+  uploadBox.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+      const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
+      if (allowedTypes.includes(file.type)) {
+        uploadText.textContent = file.name;
+        uploadText.style.color = '#000'; // ubah warna teks setelah pilih
+      } else {
+        alert('Hanya bisa upload file PDF atau Gambar (PNG/JPG/JPEG)');
+        fileInput.value = '';
+        uploadText.textContent = 'Upload Disini';
+        uploadText.style.color = '#59D3FF';
+      }
+    }
+  });
+  const submitBtn = document.querySelector('.submit-btn');
+
+  submitBtn.addEventListener('click', () => {
+    // Tampilkan alert
+    const alertBox = document.getElementById('upload-alert');
+    alertBox.style.display = 'block';
+
+    // Sembunyikan setelah animasi selesai (3s)
+    setTimeout(() => {
+      alertBox.style.display = 'none';
+    }, 3000);
+  });
+</script>
+
+</html>
